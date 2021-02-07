@@ -1,0 +1,255 @@
+html{
+    box-sizing: border-box;
+    text-transform: capitalize;
+    text-shadow: 0px 2px rgba(0, 0, 0, 0.1);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+body{
+    background: url(./images/topography.svg),linear-gradient(110deg, #f93d66, #6d47d9);
+    background-size: cover;
+    background-position: center;
+    margin: 3rem 3rem;
+}
+.wrapper{
+    display: grid;
+    grid-gap: 20px;
+}
+.btn{
+    background: #ffc600;
+    border: none;
+    padding: 10px 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn div{
+    width: 1rem;
+    height: 1rem;
+    margin: 0 5px;
+    background-position: center;
+    background-size: cover;
+}
+#icon1{
+    background-image: url('menu.png');
+}
+#icon2{
+    background-image: url('arrow-pointing-to-right.png');
+}
+.main-nav ul{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(165px,1fr)) ;
+    list-style: none;
+    grid-gap: 10px;
+    padding: 0;
+}
+.link a{
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+}
+.link{
+    background-color: #ffc600;
+    display: block;
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+    font-weight: 700;
+}
+.top-section{
+    display: grid;
+    grid-gap: 30px;
+    grid-template-rows: 200px 200px;
+    grid-template-areas: 
+    'poster poster taco'
+    'poster poster komb';
+}
+#taco{
+    grid-area: taco;
+}
+#komb{
+    grid-area: komb;
+}
+.main-poster{   
+    grid-area: poster;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    background-image:url('chief.jpg');
+}
+.main-poster *{
+    background-color: #ffc600;
+    padding: 5px;
+}
+.main-poster h1{
+    font-size: 30px;
+    margin: 0;;
+}
+.main-poster h3{
+    font-size: 15px;
+}
+.price{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    background-color: #ffc600;
+}
+.p1{
+    font-weight: lighter;
+    font-size: 60px;
+}
+.p2{
+    font-weight: bold;
+    font-size: 15px;
+    margin: -60px auto;
+}
+.boxes{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    grid-gap: 30px;
+}
+.boxes>div{
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    text-align: center;
+}
+.boxes h1{
+    font-size: 1rem;
+}
+.boxes p{
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: 700;
+}
+.boxes #pic{
+    margin: auto 10px;
+    width: 20px;
+    height: 30px;
+    border: 4px solid #272727;
+    content: '';
+}
+.info{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    background-color: #fff;
+}
+.info-poster{
+    background-position: center;
+    background-size: cover;
+    padding: 50px 0 50px 50px;
+}
+.learn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    color: #272727;
+    margin: 0;
+    margin-right: 20px;
+
+}
+.learn button{
+    font-size: 15px;
+}
+.learn h2{
+    font-size: 15px;
+    margin-bottom: 10px;
+    padding: 0;
+}
+.learn h2:first-child{
+    font-size: 25px;
+}
+.instant{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+.instant div:first-child{
+    height: 10px;
+    width: 100%;
+    background: linear-gradient(to right,transparent,yellow);
+}
+.instant div:last-child{
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(to left,transparent,yellow);
+}
+.instant h2{
+    text-align: center;
+    font-size: 22.5px;
+    width: 400px;
+    margin: 0 5px;
+    color: #272727;
+    font-weight: bold;
+}
+
+.pics{
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+}
+.pics img{
+    width: 200px;
+height: 200px;
+}
+
+
+@media (min-width:1000px){
+    .main-nav{
+        display: grid;
+    }
+    #clickMe{
+        display: none;
+    }
+}
+@media (max-width:700px){
+    .info{
+        grid-template-columns: 1fr;
+    }
+    .learn{
+        margin: 0 0 50px 50px;
+    }
+    .top-section{
+        grid-template-areas: 
+        'poster poster'
+        'poster poster'
+        'taco komb';
+    }
+    .p1, .p2{
+        margin: 0;
+    }
+}
+@media (max-width:510px){
+    .top-section{
+        grid-template-areas: 
+        'poster'
+        'poster'
+        'taco'
+        'komb';
+    }
+    .boxes{
+        grid-template-columns: 1fr;
+        margin-right: 3rem;
+    }
+    .top-section > *{
+        margin-right: 3rem;
+        width: inherit;
+    }
+    .main-nav ul{
+        margin-right: 3rem;
+    }
+    .info{
+        margin-right: 3rem;
+    }
+    .instant{
+        margin-right: 3rem;
+    }
+}
