@@ -1,0 +1,53 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background:linear-gradient(rgb(255, 0, 0),rgb(255, 94, 0))
+}
+.piano{
+    display: flex;
+    width: 80%;
+}
+.white{
+    background-color: #ffffff;
+    width: 100px;
+    height: 400px;
+    border: 3px solid black;
+    border-radius: 3px;
+}
+.white:hover{
+    background-color: rgb(200, 200, 200);
+}
+.black{
+    background-color: #000000;
+    position: absolute;
+    height: 250px;
+    width: 5%;
+    box-shadow: 4px 4px rgba(0, 0, 0, 0.7);
+}
+.black:hover{
+    background-color: rgb(50, 50, 50);
+}
+#Db4{
+    left: 16%;
+}
+#Eb4{
+    left: 24%;
+}
+#Gb4{
+    left: 39.8%;
+}
+#Ab4{
+    left: 47.4%;
+}
+#Bb4{
+    left: 55.5%;
+}
+#Db5{
+    left: 71.3%;
+}
+#Eb5{
+    left: 79.3%;
+}
