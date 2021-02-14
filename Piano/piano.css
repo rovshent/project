@@ -2,18 +2,21 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    width: 100%;
+    height: 98vh;
+    width: 99vw;
     background:linear-gradient(rgb(255, 0, 0),rgb(255, 94, 0))
 }
 .piano{
     display: flex;
+    justify-content: space-around;
     width: 80%;
+    height: 45%;
+    border: 1px dashed black;
 }
 .white{
     background-color: #ffffff;
-    width: 100px;
-    height: 400px;
+    width: 100%;
+    height: 100%;
     border: 3px solid black;
     border-radius: 3px;
 }
@@ -23,7 +26,7 @@ body{
 .black{
     background-color: #000000;
     position: absolute;
-    height: 250px;
+    height: 26%;
     width: 5%;
     box-shadow: 4px 4px rgba(0, 0, 0, 0.7);
 }
