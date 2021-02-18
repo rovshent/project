@@ -1,0 +1,135 @@
+html{
+    max-zoom: 100vh;
+}
+body{
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    font-family: Roboto;
+}
+.page{
+    position: absolute;
+    width: 100vw;
+    height: 99vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    text-transform: capitalize;
+    transition: all 500ms 1s ease-in;
+    opacity: 0;
+    z-index: 0;
+}
+.header{
+    font-size: 4vw;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+}
+.animation-bar{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 45%;
+    box-shadow: 0 0 7px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn{
+    text-transform: uppercase;
+    color: white;
+    background-color: rgb(253, 40, 40);
+    outline: none;
+    border-radius: 10px;
+    border: none;
+    font-size: 18px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: all 1000ms ease;
+}
+.first, .second , .third{
+    text-transform: none;
+    width: 100%;
+    height: 25%;
+    display: flex;
+    position: absolute;
+    opacity: 0;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    font-size: 2.5vw;
+    color: rgba(0, 0, 0, 0);
+    transform: translate(0,80px);
+    transition: all 700ms ease-out;
+}
+.appeared{
+    opacity: 1;
+    color: rgba(0, 0, 0, 1);
+    transform: translate(0);
+}
+.currentPage{
+    opacity: 1;
+    z-index: 1;
+}
+.clicked{
+    background-color: #fff;
+    color: rgb(253, 40, 40);
+    border: 1px solid rgb(253, 40, 40);
+}
+.pics>div:nth-child(1){
+    background-image: url('pic1.jpg');
+}
+.pics>div:nth-child(2){
+    background-image: url('pic3.jpg');
+}
+.pics>div:nth-child(3){
+    background-image: url('pic2.jpg');
+}
+.page2{
+    height: 85vh;
+}
+.pics{
+    height:30vh;
+    width: 90vw;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 25vw 25vw 25vw;
+    grid-template-rows: 25vw;
+    grid-gap: 7vw;
+    margin: 20px;
+    outline: none;
+}
+.pics>div{
+    padding: 1%;
+    border-radius: 10%;
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: box-shadow,padding,border,transform 500ms ease;
+    cursor: pointer;
+    outline: none;
+}
+.selected{
+    padding: 0;
+    border: 10px solid #fff;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2);
+    transform: translate(0,-4%);
+}
+#select-btn{
+    opacity: 0;
+}
+
+.front{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 10%;
+    padding:1%;
+    background: rgba(256, 256, 256, 0.3);
+    transform: translate(-2%,-2%);
+}
