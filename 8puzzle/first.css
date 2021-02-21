@@ -1,6 +1,3 @@
-html{
-    max-zoom: 100vh;
-}
 body{
     margin: 0;
     padding: 0;
@@ -12,7 +9,7 @@ body{
 .page{
     position: absolute;
     width: 100vw;
-    height: 99vh;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,15 +20,16 @@ body{
     z-index: 0;
 }
 .header{
-    font-size: 4vw;
+    font-size: 5vw;
     font-weight: 300;
     margin: 0;
     padding: 0;
+    color: rgba(0, 0, 0, 0.7);
 }
 .animation-bar{
     margin: 0;
     padding: 0;
-    width: 100%;
+    width: 60%;
     height: 45%;
     box-shadow: 0 0 7px 5px rgba(0, 0, 0, 0.2);
     display: flex;
@@ -43,12 +41,12 @@ body{
     color: white;
     background-color: rgb(253, 40, 40);
     outline: none;
-    border-radius: 10px;
+    border-radius: 1vw;
     border: none;
-    font-size: 18px;
-    padding: 10px 15px;
+    font-size: 1.5vw;
+    padding: 1vw 1vw;
     cursor: pointer;
-    transition: all 1000ms ease;
+    transition: all 500ms ease;
 }
 .first, .second , .third{
     text-transform: none;
@@ -60,24 +58,26 @@ body{
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
-    font-size: 2.5vw;
+    font-size: 3vw;
     color: rgba(0, 0, 0, 0);
     transform: translate(0,80px);
-    transition: all 700ms ease-out;
+    transition: all 500ms ease-out;
 }
 .appeared{
     opacity: 1;
-    color: rgba(0, 0, 0, 1);
+    color: rgba(0, 0, 0, 0.7);
     transform: translate(0);
 }
 .currentPage{
     opacity: 1;
-    z-index: 1;
+    z-index: 2;
 }
-.clicked{
+.btn:hover{
     background-color: #fff;
     color: rgb(253, 40, 40);
     border: 1px solid rgb(253, 40, 40);
+    /* padding: 1% 2%; */
+    box-shadow: 0 0 7px 5px rgba(0, 0, 0, 0.2);
 }
 .pics>div:nth-child(1){
     background-image: url('pic1.jpg');
@@ -88,48 +88,157 @@ body{
 .pics>div:nth-child(3){
     background-image: url('pic2.jpg');
 }
-.page2{
-    height: 85vh;
-}
 .pics{
-    height:30vh;
-    width: 90vw;
     margin: 0;
     display: grid;
-    grid-template-columns: 25vw 25vw 25vw;
-    grid-template-rows: 25vw;
+    grid-template-columns: 20vw 20vw 20vw;
+    grid-template-rows: 20vw;
     grid-gap: 7vw;
-    margin: 20px;
-    outline: none;
 }
 .pics>div{
-    padding: 1%;
     border-radius: 10%;
     height: 100%;
     width: 100%;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    transition: box-shadow,padding,border,transform 500ms ease;
+    transition: all 500ms ease;
     cursor: pointer;
+    border: 1vw solid #fff;
     outline: none;
-}
-.selected{
-    padding: 0;
-    border: 10px solid #fff;
-    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2);
-    transform: translate(0,-4%);
 }
 #select-btn{
     opacity: 0;
 }
 
 .front{
+    z-index: 2;
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 20vw;
+    height: 20vw;
+    padding: 1vw;
+    transform: translate(-1vw,-1vw);
     border-radius: 10%;
-    padding:1%;
-    background: rgba(256, 256, 256, 0.3);
-    transform: translate(-2%,-2%);
+    background: rgba(256, 256, 256, 0);
+    transition: all 500ms ease;
+}
+
+
+.page3{
+    justify-content: flex-start;
+}
+.puzzle{
+    position: absolute;
+    width: 38.3vw ;
+    height: 38.3vw;
+    display:grid;
+    grid-template-columns: 13vw 13vw 13vw;
+    grid-template-rows: 13vw 13vw 13vw;
+    grid-gap: .3vw;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 1vw;
+    background-color: rgb(245,245,245);
+}
+.puzzle div{
+    border-radius: 1.5vw;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    width: 12vw;
+    height: 12vw;
+    border: .2vw solid green;
+    background-size: 38vw 38vw;
+    transition: all 400ms linear;
+}
+.page3{
+    margin-top: 10vh;
+    height: 70vh ;
+}
+.page3>h1{
+    position: absolute;
+    top: 39vw;
+    margin-top: 5vh;
+    font-size: 2.3vw;
+    font-family: Roboto;
+    font-weight: 300;
+}
+#shuffle{
+    position: absolute;
+    top: 48vw;
+    width: 20vw;
+    padding: 1vw;
+    font-size: 1.3vw;
+    background-color: rgb(240, 240, 240);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+#shuffle-btn{
+    opacity: 1;
+    position: absolute;
+    top: 55vw;
+}
+#a8{
+    background-position: bottom right;
+}
+#a7{
+    background-position: bottom center;
+}
+#a6{
+    background-position: bottom left;
+}
+#a5{
+    background-position: center right;
+}
+#a4{
+    background-position: center center;
+}
+#a3{
+    background-position: center left;
+}
+#a2{
+    background-position: top right;
+}
+#a1{
+    background-position: top center;
+}
+#a0{
+    border: none;
+}
+.a8{
+    top: 25.5vw;
+    left: 25.5vw;
+}
+.a7{
+    top: 25.5vw;
+    left: 13vw;
+}
+.a6{
+    top: 25.5vw;
+    left: 0.5vw;
+}
+.a5{
+    top: 13vw;
+    left: 25.5vw;
+}
+.a4{
+    top: 13vw;
+    left: 13vw;
+}
+.a3{
+    top: 13vw;
+    left: 0.5vw;
+}
+.a2{
+    top: 0.5vw;
+    left: 25.5vw;
+    
+}
+.a1{
+    top: 0.5vw;
+    left: 13vw;
+}
+.a0{
+    top: 0.5vw;
+    left: 0.5vw;
+    /* border: ; */
 }
