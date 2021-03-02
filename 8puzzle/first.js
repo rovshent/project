@@ -1,6 +1,6 @@
 const a=document.querySelector('.animation-bar').children;
 var k=3;
-const timer = setInterval(change,2000);
+const timer = setInterval(change,1500);
 function change(){
     if(a[(k-1)%3].classList.contains('appeared')) a[(k-1)%3].classList.remove('appeared');
     a[k%3].classList.add('appeared');
@@ -16,7 +16,7 @@ function toSecond(){
     page1.classList.remove('currentPage');
     setTimeout(() => {
         page2.classList.add('currentPage');
-    }, 500);
+    }, 350);
 }
 
 var img;
@@ -26,7 +26,7 @@ pics.forEach(x=>x.addEventListener('click',function(e) {
         y.style.boxShadow='';
         y.classList.remove('selected');
     })
-    x.style.boxShadow='0 0 5px 5px rgba(0, 0, 0, 0.2)';
+    x.style.boxShadow='0 0 7px 7px rgba(0, 0, 0, 0.4)';
     x.classList.add('selected');
     document.getElementById('select-btn').style.opacity=1;
     for(var i=0;i<3;i++){
@@ -64,8 +64,6 @@ function toThird(){
     }, 300);
     for(let i=1;i<9;i++)
         puzzle[i].style.backgroundImage=img;
-    for (let i = 1;i<9;i++)
-        puzzle[i].addEventListener("click",move);
     selected.addEventListener('click',function(e){
         var myPromise = new Promise(function(myResolve){
             if(selected.value!=0)myResolve();
@@ -120,10 +118,11 @@ function offHover(){
     for(let i=1;i<9;i++)
         puzzle[i].firstChild.classList.remove('onHover');
 }
-let focus;
+let focus,ifWon;
 function shuffle(){
     selected.style.display = 'none';
     shuffleBtn.style.display = 'none';
+    document.getElementById('h1').style.display = 'none';
     let n = selected.value;
     var speed;
     switch(n){
@@ -131,7 +130,7 @@ function shuffle(){
             speed=500;
             break;
         case '30':
-            speed=300;
+            speed=200;
             break;
         case '50':
             speed=100;
@@ -167,12 +166,35 @@ function shuffle(){
         },k*speed);
         ++k;
     }
-    }
-    for(let i=1;i<9;i++){
-        puzzle[i].style.transitionDuration = 500+'ms';
-    focus = setInterval(candidate,1)
-    document.querySelector('.puzzle').addEventListener('mouseover',onHover);
-    document.querySelector('.puzzle').addEventListener('mouseout',offHover);
+    setTimeout(function(){
+        document.querySelector('#h2').style.display= 'block';
+        document.querySelector('#h3').style.display= 'block';
+        for(let i=1;i<9;i++)
+            puzzle[i].style.transitionDuration = 500+'ms';
+        for(let i=1;i<9;i++)
+            puzzle[i].addEventListener("click",move);
+        focus = setInterval(candidate,1);
+        document.querySelector('.puzzle').addEventListener('mouseover',onHover);
+        document.querySelector('.puzzle').addEventListener('mouseout',offHover);
+        ifWon = setInterval(checkIfWon,10);
+    },n*speed);
+}
+let congrats = document.querySelector('#won');
+function checkIfWon() {
+    let b=true;
+    for(let i = 0; i<9; i++)
+        if(puzzle[i].id!=puzzle[i].className)
+            b=false;
+    if(b) won();
+}
+function won() {
+    clearInterval(ifWon);
+    ifWon=null;
+    congrats.classList.remove('unvisible');
+    congrats.classList.add('won');
+    setTimeout(() => {
+        congrats.classList.add('end');
+    }, 100);
     window.onkeydown = (e)=>{
         if(e.keyCode=='116') reloadPuzzle();
         e.preventDefault();
@@ -181,8 +203,20 @@ function shuffle(){
 function reloadPuzzle(){
     selected.style.display = 'block';
     shuffleBtn.style.display = 'block';
-    focus = null;
+    document.querySelector('#h2').style.display= 'none';
+    document.querySelector('#h3').style.display= 'none';
+    document.querySelector('#h1').style.display= 'block';
+    congrats.classList.add('unvisible');
+    congrats.classList.remove('won');
+    congrats.classList.remove('end');
+    clearInterval(focus);
     for(let i=1;i<9;i++){
         puzzle[i].style.transitionDuration = 0;
+        puzzle[i].firstChild.classList.add('candidate');
+        puzzle[i].removeEventListener("click",move);
+    } 
+    window.onkeydown = (e)=>{
+        if(e.keyCode=='116') document.location.reload(true);
+        e.preventDefault();
     }
 }

@@ -39,14 +39,20 @@
             <div id="a7" class="a7"><div></div></div>
             <div id="a8" class="a8"><div></div></div>
         </div>
-        <h1>Select Shuffle Amount</h1>
+        <h1 id="h1">Select Shuffle Amount</h1>
+        <h1 id="h2">Sulve the puzzle now!</h1>
+        <h5 id="h3">Press F5 to restart</h5>
         <select name="select" id="shuffle">
-            <option value="0" disabled selected>Choode Shuffle</option>
+            <option value="0" disabled selected>Choose Shuffle</option>
             <option value="3">3 Moves</option>
             <option value="30">30 Moves</option>
             <option value="50">50 Moves</option>
         </select>
         <button class="btn" id="shuffle-btn">Shuffle</button>
+        <div id="won" class="unvisible">
+            <h1>Congratulations!</h1>
+            <h5>Press F5 to restart</h5>
+        </div>
     </section>
     <script src="first.js"></script>
 </body>
