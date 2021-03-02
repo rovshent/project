@@ -190,6 +190,8 @@ function checkIfWon() {
 function won() {
     clearInterval(ifWon);
     ifWon=null;
+    document.querySelector('#h2').style.display='none';
+    document.querySelector('#h3').style.display='none';
     congrats.classList.remove('unvisible');
     congrats.classList.add('won');
     setTimeout(() => {
