@@ -52,38 +52,137 @@ pics.forEach(x=>x.addEventListener("mouseover",function(e) {
 pics.forEach(x=>x.addEventListener("mouseout",function(e) {
     e.target.style.background = '';
 }))
-
 const puzzle = document.querySelector('.puzzle').children; 
 btn2.addEventListener('click',toThird);
 const choose = document.getElementById('.shuffle');
+const shuffleBtn = document.querySelector('#shuffle-btn');
+const selected = document.querySelector('#shuffle');
 function toThird(){
     page2.classList.remove('currentPage');
     setTimeout(() => {
         page3.classList.add('currentPage');
-    }, 500);
+    }, 300);
     for(let i=1;i<9;i++)
         puzzle[i].style.backgroundImage=img;
     for (let i = 1;i<9;i++)
         puzzle[i].addEventListener("click",move);
-    const shuffleBtn = document.getElementById('shuffle-btn');
-
-
-
-
-}    
+    selected.addEventListener('click',function(e){
+        var myPromise = new Promise(function(myResolve){
+            if(selected.value!=0)myResolve();
+        })
+        myPromise.then(function(){
+            shuffleBtn.style.opacity = 1;
+        });
+    })
+    shuffleBtn.addEventListener('click',shuffle);
+}
+function border(){
+    for(let i=1;i<9;i++)
+        if(puzzle[i].classList.contains(puzzle[i].id))
+            puzzle[i].style.border = '.2vw solid green';
+        else
+            puzzle[i].style.border = '.2vw solid red';
+}
 function move(e){
     let pos = e.target.getBoundingClientRect();
     let tile= document.getElementById('a0').clientHeight;
     let emptyPos = document.getElementById('a0').getBoundingClientRect();
     let empty = document.getElementById('a0');
-    if(((pos.top-tile-emptyPos.top<tile) && (pos.left==emptyPos.left)) || ((pos.left-tile-emptyPos.left<tile) && (pos.top==emptyPos.top))){
+    if(((Math.abs(pos.top-emptyPos.top)-tile<tile) && (pos.left==emptyPos.left)) || ((Math.abs(pos.left-emptyPos.left)-tile<tile) && (pos.top==emptyPos.top))){
         let tempClass =  e.target.className;
         e.target.classList = empty.classList;
         empty.classList = tempClass;
-        for(let i=1;i<9;i++)
-            if(puzzle[i].className==puzzle[i].id)
-                puzzle[i].style.border = '.2vw solid green'
-            else
-                puzzle[i].style.border = '.2vw solid red'
+        border();
+    }
+}
+function candidate(){
+    let emptyPos = document.getElementById('a0').getBoundingClientRect();
+    let tile= document.getElementById('a0').clientHeight;
+    for(let i = 1; i<9;i++){
+        let pos = puzzle[i].getBoundingClientRect();
+        if(((Math.abs(pos.top-emptyPos.top)-tile<tile) && (pos.left==emptyPos.left)) || ((Math.abs(pos.left-emptyPos.left)-tile<tile) && (pos.top==emptyPos.top))){
+            puzzle[i].firstChild.classList.add('candidate');
+        }else{
+            puzzle[i].firstChild.classList.remove('candidate');
+        }
+    }
+}
+function onHover() {
+    for(let i=1;i<9;i++){
+        if(puzzle[i].firstChild.classList.contains('candidate')){
+            puzzle[i].firstChild.classList.remove('onHover');
+        }else{
+            puzzle[i].firstChild.classList.add('onHover');
+        }
+    }
+}
+function offHover(){
+    for(let i=1;i<9;i++)
+        puzzle[i].firstChild.classList.remove('onHover');
+}
+let focus;
+function shuffle(){
+    selected.style.display = 'none';
+    shuffleBtn.style.display = 'none';
+    let n = selected.value;
+    var speed;
+    switch(n){
+        case '3':
+            speed=500;
+            break;
+        case '30':
+            speed=300;
+            break;
+        case '50':
+            speed=100;
+            break;
+    }
+    for(let i=1;i<9;i++){
+        puzzle[i].style.transitionDuration = speed+'ms';
+    }
+    let k=0;
+    let prev=0;
+    while (k < n){
+        setTimeout(function(){
+            let tile= document.getElementById('a0').clientHeight;
+            let emptyPos = document.getElementById('a0').getBoundingClientRect();
+            let empty = document.getElementById('a0');
+            let b=false;
+            let pos;
+            let randNum;
+            while (!b){
+                randNum = Math.floor(Math.random()*8)+1;
+                if(prev==puzzle[randNum].id)continue;
+                pos = puzzle[randNum].getBoundingClientRect();
+                if(((Math.abs(pos.top-emptyPos.top)-tile<tile) && (pos.left==emptyPos.left)) || ((Math.abs(pos.left-emptyPos.left)-tile<tile) && (pos.top==emptyPos.top))){
+                    b=true;
+                }    
+            }
+                curr = puzzle[randNum];
+                let tempClass =  curr.className;
+                curr.classList = empty.classList;
+                empty.classList = tempClass;
+                border();
+                prev = curr.id;
+        },k*speed);
+        ++k;
+    }
+    }
+    for(let i=1;i<9;i++){
+        puzzle[i].style.transitionDuration = 500+'ms';
+    focus = setInterval(candidate,1)
+    document.querySelector('.puzzle').addEventListener('mouseover',onHover);
+    document.querySelector('.puzzle').addEventListener('mouseout',offHover);
+    window.onkeydown = (e)=>{
+        if(e.keyCode=='116') reloadPuzzle();
+        e.preventDefault();
+    }
+}
+function reloadPuzzle(){
+    selected.style.display = 'block';
+    shuffleBtn.style.display = 'block';
+    focus = null;
+    for(let i=1;i<9;i++){
+        puzzle[i].style.transitionDuration = 0;
     }
 }

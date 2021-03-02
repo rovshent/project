@@ -139,7 +139,7 @@ body{
     border-radius: 1vw;
     background-color: rgb(245,245,245);
 }
-.puzzle div{
+.puzzle>div{
     border-radius: 1.5vw;
     background-size: cover;
     background-position: center;
@@ -148,7 +148,8 @@ body{
     height: 12vw;
     border: .2vw solid green;
     background-size: 38vw 38vw;
-    transition: all 400ms linear;
+    transition-timing-function: linear;
+    transition-property: all;
 }
 .page3{
     margin-top: 10vh;
@@ -156,7 +157,7 @@ body{
 }
 .page3>h1{
     position: absolute;
-    top: 39vw;
+    top: 53vh;
     margin-top: 5vh;
     font-size: 2.3vw;
     font-family: Roboto;
@@ -164,7 +165,7 @@ body{
 }
 #shuffle{
     position: absolute;
-    top: 48vw;
+    top: 63vh;
     width: 20vw;
     padding: 1vw;
     font-size: 1.3vw;
@@ -173,9 +174,10 @@ body{
     border-radius: 5px;
 }
 #shuffle-btn{
-    opacity: 1;
+    opacity: 0;
     position: absolute;
-    top: 55vw;
+    top: 80vh;
+    transition: opacity 1s ease;
 }
 #a8{
     background-position: bottom right;
@@ -240,5 +242,16 @@ body{
 .a0{
     top: 0.5vw;
     left: 0.5vw;
-    /* border: ; */
+}
+
+.onHover{
+    width: 102%;
+    height: 102%;
+    transform: translate(-1%,-1%);
+    z-index: 10;
+    position: absolute;
+    background-color: rgba(256, 256, 256, 0.7);
+    border-radius: inherit;
+    padding: inherit;
+    margin: inherit;
 }
