@@ -47,7 +47,6 @@ rightImages.forEach((element) => {
 		x: '50vw',
 		y: '+=10',
 		opacity: 0,
-		// duration: 0.5,
 		scrollTrigger: {
 			trigger: element,
 			start: 'top 180%',
@@ -152,7 +151,6 @@ homeScroll = ScrollTrigger.create({
 homeScroll = ScrollTrigger.create({
 	trigger: '#wines',
 	start: '90% 100%',
-	// end: '-5vh top',
 	onEnter: () => nav.classList.add('wine-nav'),
 	onLeave: () => nav.classList.remove('wine-nav'),
 	onEnterBack: () => nav.classList.add('wine-nav'),
