@@ -1,15 +1,14 @@
-html {
-	scroll-behavior: smooth;
-	// overflow-y: scroll;
+* {
+	box-sizing: border-box;
 }
 body {
 	margin: 0;
 	padding: 0;
 	font-family: 'Roboto';
 	height: 100vh;
-	// overflow: hidden;
-	// overflow-y: scroll;
-	// scroll-snap-type: mandatory;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	scroll-behavior: smooth;
 }
 
 $primary: #000000;
@@ -22,7 +21,7 @@ $orange: rgb(255, 186, 58);
 	top: 0;
 	width: 100%;
 	height: 3.5em;
-	background-color: $primary;
+	background: transparent;
 
 	nav {
 		margin: 0 5em;
@@ -33,7 +32,7 @@ $orange: rgb(255, 186, 58);
 
 		.logo {
 			font-size: 2em;
-			color: $secondary;
+			color: $primary;
 		}
 
 		ul {
@@ -55,13 +54,14 @@ $orange: rgb(255, 186, 58);
 
 			a {
 				text-decoration: none;
-				color: $secondary;
+				color: $primary;
 			}
 		}
 	}
 }
 
 section {
+	scroll-snap-align: start;
 	height: 100vh;
 	font-size: 3em;
 	width: 100%;
@@ -228,11 +228,21 @@ footer {
 	& > div {
 		width: 100%;
 		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		h1 {
+			margin: 0;
+		}
 		.navigation {
 			margin: 0 5em;
 			li {
 				list-style: none;
 				margin-bottom: 0.3em;
+
+				a {
+					text-decoration: none;
+					color: $primary;
+				}
 			}
 		}
 	}
@@ -247,6 +257,9 @@ footer {
 	body {
 		font-size: 10px;
 	}
+	.nav {
+		height: 6em;
+	}
 }
 @media only screen and (max-width: 600px) {
 	section {
@@ -255,10 +268,10 @@ footer {
 			justify-content: center;
 			.text {
 				z-index: 5;
-				width: 80%;
+				width: 90%;
 			}
 			.hero {
-				width: 80%;
+				width: 90%;
 			}
 		}
 	}
@@ -272,27 +285,33 @@ footer {
 		.content {
 			.hero {
 				height: 50%;
-				width: 60%;
+				width: 90%;
 			}
 		}
 	}
 	#tacos {
-		content {
-			flex-direction: column;
+		.content {
 			.hero {
-				img {
-					&:first-child {
-						align-self: flex-start;
-					}
-					&:last-child {
-						align-self: flex-end;
-					}
-				}
+				width: 90%;
+				height: 50%;
+			}
+			.text {
+				height: 50%;
 			}
 		}
 	}
+}
+
+@media only screen and (max-width: 400px) {
+	.text {
+		font-size: 0.7em;
+	}
 	footer > div {
 		flex-direction: column;
+		align-items: center;
+		.navigation {
+			margin: 0;
+		}
 		.contact-us {
 			margin: 20px auto;
 			h1,
@@ -303,8 +322,72 @@ footer {
 	}
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 350px) {
 	.text {
-		font-size: 0.7em;
+		font-size: 0.5em;
+	}
+}
+
+.home-nav {
+	background-color: $primary;
+	nav {
+		.logo {
+			color: $secondary;
+		}
+		ul {
+			li {
+				a {
+					color: $secondary;
+				}
+			}
+		}
+	}
+}
+
+.burger-nav {
+	background-color: $orange;
+	nav {
+		.logo {
+			color: $secondary;
+		}
+		ul {
+			li {
+				a {
+					color: $secondary;
+				}
+			}
+		}
+	}
+}
+
+.taco-nav {
+	background-color: $extra;
+	nav {
+		.logo {
+			color: $secondary;
+		}
+		ul {
+			li {
+				a {
+					color: $secondary;
+				}
+			}
+		}
+	}
+}
+
+.wine-nav {
+	background-color: $secondary;
+	nav {
+		.logo {
+			color: $primary;
+		}
+		ul {
+			li {
+				a {
+					color: $primary;
+				}
+			}
+		}
 	}
 }

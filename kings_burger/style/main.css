@@ -1,5 +1,5 @@
-html {
-  scroll-behavior: smooth;
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -7,6 +7,9 @@ body {
   padding: 0;
   font-family: 'Roboto';
   height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 
 .nav {
@@ -15,7 +18,7 @@ body {
   top: 0;
   width: 100%;
   height: 3.5em;
-  background-color: #000000;
+  background: transparent;
 }
 
 .nav nav {
@@ -28,7 +31,7 @@ body {
 
 .nav nav .logo {
   font-size: 2em;
-  color: #ffffff;
+  color: #000000;
 }
 
 .nav nav ul {
@@ -51,10 +54,11 @@ body {
 
 .nav nav ul a {
   text-decoration: none;
-  color: #ffffff;
+  color: #000000;
 }
 
 section {
+  scroll-snap-align: start;
   height: 100vh;
   font-size: 3em;
   width: 100%;
@@ -243,6 +247,12 @@ footer {
 footer > div {
   width: 100%;
   display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+footer > div h1 {
+  margin: 0;
 }
 
 footer > div .navigation {
@@ -252,6 +262,11 @@ footer > div .navigation {
 footer > div .navigation li {
   list-style: none;
   margin-bottom: 0.3em;
+}
+
+footer > div .navigation li a {
+  text-decoration: none;
+  color: #000000;
 }
 
 @media only screen and (max-width: 900px) {
@@ -264,6 +279,9 @@ footer > div .navigation li {
   body {
     font-size: 10px;
   }
+  .nav {
+    height: 6em;
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -273,29 +291,37 @@ footer > div .navigation li {
   }
   section .content .text {
     z-index: 5;
-    width: 80%;
+    width: 90%;
   }
   section .content .hero {
-    width: 80%;
+    width: 90%;
   }
   #burgers .hero {
     margin: 0 auto;
   }
   #wines .content .hero {
     height: 50%;
-    width: 60%;
+    width: 90%;
   }
-  #tacos content {
-    flex-direction: column;
+  #tacos .content .hero {
+    width: 90%;
+    height: 50%;
   }
-  #tacos content .hero img:first-child {
-    align-self: flex-start;
+  #tacos .content .text {
+    height: 50%;
   }
-  #tacos content .hero img:last-child {
-    align-self: flex-end;
+}
+
+@media only screen and (max-width: 400px) {
+  .text {
+    font-size: 0.7em;
   }
   footer > div {
     flex-direction: column;
+    align-items: center;
+  }
+  footer > div .navigation {
+    margin: 0;
   }
   footer > div .contact-us {
     margin: 20px auto;
@@ -306,8 +332,56 @@ footer > div .navigation li {
   }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 350px) {
   .text {
-    font-size: 0.7em;
+    font-size: 0.5em;
   }
+}
+
+.home-nav {
+  background-color: #000000;
+}
+
+.home-nav nav .logo {
+  color: #ffffff;
+}
+
+.home-nav nav ul li a {
+  color: #ffffff;
+}
+
+.burger-nav {
+  background-color: #ffba3a;
+}
+
+.burger-nav nav .logo {
+  color: #ffffff;
+}
+
+.burger-nav nav ul li a {
+  color: #ffffff;
+}
+
+.taco-nav {
+  background-color: #5000ca;
+}
+
+.taco-nav nav .logo {
+  color: #ffffff;
+}
+
+.taco-nav nav ul li a {
+  color: #ffffff;
+}
+
+.wine-nav {
+  background-color: #ffffff;
+}
+
+.wine-nav nav .logo {
+  color: #000000;
+}
+
+.wine-nav nav ul li a {
+  color: #000000;
 }
